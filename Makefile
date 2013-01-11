@@ -1,4 +1,9 @@
 test:
 	./node_modules/.bin/_mocha --reporter spec
 
-.PHONY: test
+bench:
+	npm install ttl-lru-cache
+	npm install lru-cache
+	node benckmark/bench.js 
+
+.PHONY: test bench

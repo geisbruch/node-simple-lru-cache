@@ -4,8 +4,7 @@
   "author": "Gabriel Eisbruch",
   "description": "",
   "main": "index",
-  "keywords":[
-  ],
+  "keywords":["cache","lru","simple","fast"],
   "directories": {
     "lib": "./lib"
   },
@@ -30,6 +29,6 @@
   },
   "scripts": {
       "test": "make test",
-      "benchmark":""
+      "bench":"make bench"
   }
 }
