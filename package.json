@@ -1,6 +1,6 @@
 {
   "name": "simple-lru-cache",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Gabriel Eisbruch",
   "description": "",
   "main": "index",
