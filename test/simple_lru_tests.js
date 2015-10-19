@@ -58,5 +58,41 @@ describe("BigCache Config",function(){
 
         for(var i = 0; i < 100; i++)
             cache.get(i).should.equal("value_"+i+"_modif")
-    }) 
+    })
+    it("Should have forEach with the same interface as Array#forEach", function() {
+        var cache = new SimpleCache({maxSize:10})
+        for(var i = 1; i <= 10; i++)
+            cache.set(i,"value_"+i)
+
+        var testContext1 = { test:1 }
+        var testContext2 = { other: 2 }
+
+        cache.forEach(function(value,key,passedCache){
+            should.exist(this)
+            should.exist(this.test)
+            should.exist(value)
+            should.exist(key)
+            should.exist(passedCache)
+            should(key).be.a.String();
+            should(passedCache).be.instanceof(SimpleCache);
+            this.should.equal(testContext1)
+            this.test.should.equal(1)
+            value.should.equal("value_" + key)
+            should(+key).be.greaterThanOrEqual(1)
+            should(+key).be.lessThanOrEqual(10)
+            passedCache.should.equal(cache)
+        }, testContext1);
+
+        cache.forEach(function(value,key,passedCache){
+            should.exist(this)
+            should.exist(this.other)
+            this.other.should.be.equal(2)
+            this.should.equal(testContext2)
+        }, testContext2);
+
+        var returnValue = cache.forEach(function(value, key) {
+            return 42;
+        });
+        should(returnValue).be.undefined();
+    })
 })
