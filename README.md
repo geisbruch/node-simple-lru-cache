@@ -1,7 +1,7 @@
 node-simple-lru-cache
 =====================
 
-[![Circle CI](https://circleci.com/gh/geisbruch/node-simple-lru-cache.svg?style=svg)](https://circleci.com/gh/geisbruch/node-simple-lru-cache)
+[![Build Status](https://travis-ci.org/geisbruch/node-simple-lru-cache.svg?branch=master)](https://travis-ci.org/geisbruch/node-simple-lru-cache)
 
 It's a very simple and extremely fast lru cache for node.js.
 
