@@ -67,7 +67,7 @@ describe("BigCache Config",function(){
         {
           should.equal(cache.get("hello"), undefined);
           done();
-        }, 5);
+        }, 10);
     }) 
 
     it("Should return timeout item", function(done){
@@ -77,7 +77,7 @@ describe("BigCache Config",function(){
         {
           should.equal(cache.get("hello"), "world");
           done();
-        }, 5);
+        }, 10);
     }) 
 
 })
