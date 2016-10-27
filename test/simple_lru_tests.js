@@ -59,4 +59,25 @@ describe("BigCache Config",function(){
         for(var i = 0; i < 100; i++)
             cache.get(i).should.equal("value_"+i+"_modif")
     }) 
+
+    it("Should not return timeout item", function(done){
+        var cache = new SimpleCache({maxSize:1, maxTime: 1})
+        cache.set("hello", "world")
+        setTimeout(function() 
+        {
+          should.equal(cache.get("hello"), undefined);
+          done();
+        }, 5);
+    }) 
+
+    it("Should return timeout item", function(done){
+        var cache = new SimpleCache({maxSize:1, maxTime:100})
+        cache.set("hello", "world")
+        setTimeout(function() 
+        {
+          should.equal(cache.get("hello"), "world");
+          done();
+        }, 5);
+    }) 
+
 })
