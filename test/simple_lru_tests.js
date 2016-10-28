@@ -65,8 +65,8 @@ describe("BigCache Config",function(){
         cache.set("hello", "world")
         setTimeout(function() 
         {
-          should.equal(cache.get("hello"), undefined);
-          done();
+            should.equal(cache.get("hello"), undefined);
+            done();
         }, 10);
     }) 
 
@@ -75,9 +75,25 @@ describe("BigCache Config",function(){
         cache.set("hello", "world")
         setTimeout(function() 
         {
-          should.equal(cache.get("hello"), "world");
-          done();
+            should.equal(cache.get("hello"), "world")
+            done();
         }, 10);
     }) 
+
+    it("Should set timestamp when you use Cache.set", function(done){
+        var cache = new SimpleCache({maxSize:1, maxTime:100})
+        cache.set("hello", "world")
+        setTimeout(function() 
+        {
+            should.equal(cache.get("hello"), "world")
+            cache.set("hello", "world again")
+            setTimeout(function() 
+            {
+                should.equal(cache.get("hello"), "world again");
+                done();
+            }, 75);
+        }, 75);
+    }) 
+
 
 })
